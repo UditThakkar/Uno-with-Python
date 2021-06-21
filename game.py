@@ -185,3 +185,5 @@ Here in no canPlay we used multiple [] cause we want a list as the third paramet
 
 print("Game Over")
 print("{} is the winner!".format(winner))
+
+input("Press enter to exit....")
