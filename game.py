@@ -25,13 +25,10 @@ def buildDeck():
         deck.append(wilds[1])
     return deck
 
-
 """ 
 Shuffles the deck we just created with
 Return value: Deck-> list.
 """
-
-
 def shuffleDeck(deck):
     for cardPos in range(len(deck)):
         # generating random number from 0 to 107 as position for cards
@@ -39,7 +36,6 @@ def shuffleDeck(deck):
         # swapping values
         deck[cardPos], deck[randPos] = deck[randPos], deck[cardPos]
     return deck
-
 
 """
 Draws specified number of cards from the deck
@@ -52,13 +48,11 @@ def drawCards(numCards):
         cardDrawn.append(unoDeck.pop(0))
     return cardDrawn
 
-
 '''
 List of card player have to
 pleyer = integer, playerHand = list
 Return: None
 '''
-
 
 def showHand(player, playerHand):
     print("Player {}'s turn".format(player+1))  # +1 cause we have index 0
@@ -76,7 +70,6 @@ Checks whether a player can play or not
 here if discard is Wild they can play no matter what
 '''
 
-
 def canPlay(color, value, playerHand):
     # splitCard = card.split(' ',1) # splits the color and number
         # directly checking ibsted of suing split
@@ -86,7 +79,6 @@ def canPlay(color, value, playerHand):
         elif color in card or value in card:
             return True
     return False
-
 
 unoDeck = buildDeck()
 unoDeck = shuffleDeck(unoDeck)  # using shuffle function to shuffle the deck
