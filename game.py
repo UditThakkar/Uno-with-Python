@@ -6,8 +6,6 @@ import random
 Creates the UNO deck
 Return value: Deck -> list
 """
-
-
 def buildDeck():
     deck = []
     colors = ["Red", "Green", "Yellow", "Blue"]
@@ -43,14 +41,14 @@ Return values: cardDrawn-> list
 """
 def drawCards(numCards):
     cardDrawn = []
-    for x in range(numCards):
+    for _ in range(numCards):
         # using pop as it removes the value from the list so we don't have to worry about that
         cardDrawn.append(unoDeck.pop(0))
     return cardDrawn
 
 '''
 List of card player have to
-pleyer = integer, playerHand = list
+player = int, playerHand = list
 Return: None
 '''
 
@@ -67,9 +65,8 @@ def showHand(player, playerHand):
 
 '''
 Checks whether a player can play or not 
-here if discard is Wild they can play no matter what
+If the card is a Wild, they can play no matter what
 '''
-
 def canPlay(color, value, playerHand):
     # splitCard = card.split(' ',1) # splits the color and number
         # directly checking ibsted of suing split
@@ -101,7 +98,7 @@ playing = True
 discards.append(unoDeck.pop(0))
 
 '''
-Preparing card and avlue for canPlay function
+Preparing card and value for canPlay function
 '''
 splitCard = discards[0].split(" ", 1)
 currColor = splitCard[0]
@@ -113,10 +110,11 @@ else:
 while playing:
     showHand(playerTurn, players[playerTurn])
     print("Card on top of discard pile is: {}".format(discards[-1]))
-    if canPlay(currColor, cardVal, players[playerTurn]):
+    can_play = canPlay(currColor, cardVal, players[playerTurn])
+    if can_play:
         cardChosen =int(input("Which card do you wanna play? "))
         while not canPlay(currColor, cardVal, [players[playerTurn][cardChosen-1]]):
-            cardChosen =int(input("Not a valid car. Which card do you wanna play? "))
+            cardChosen =int(input("Not a valid card. Which card do you wanna play? "))
         print("You played {}".format([players[playerTurn][cardChosen-1]]))
         discards.append(players[playerTurn].pop(cardChosen-1))
 
@@ -169,7 +167,7 @@ while playing:
 
             print("")
     else:
-        print("You cant play. You have to draw a card.")
+        print("You can't play. You have to draw a card.")
         players[playerTurn].extend(drawCards(1))
     print("")
 
@@ -180,7 +178,7 @@ while playing:
         playerTurn = numPlayers-1
 
 '''
-Here in no canPlay we used multiple [] cause we want a list as the third parameter for us it will return string so we have used [] to make it list... in the pop part we used -1 cause we have 0 based indexing..... and we used extend cause we just want to concatinate(merge) two list by using append it would have been more complex
+Here in no canPlay we used multiple [] cause we want a list as the third parameter for us it will return string so we have used [] to make it list... in the pop part we used -1 cause we have 0 based indexing..... and we used extend cause we just want to concatenate(merge) two list. By using append, it would have been more complex
 '''
 
 print("Game Over")
