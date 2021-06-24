@@ -1,7 +1,5 @@
 import random
-
 # for reference: https://www.unovariations.com/official-uno-rules
-
 """
 Creates the UNO deck
 Return value: Deck -> list
